@@ -1,0 +1,42 @@
+import pandas as pd
+
+#O comando sample permite que a base de dados seja Importada de forma reduzida.
+
+tabela = pd.read_csv("cancelamentos_sample.csv")
+
+#Esse comando está retirando uma coluna inútil para o processamento de dados.
+
+tabela = tabela.drop(columns="CustomerID")
+
+display(tabela)
+
+
+# 1- Jupyter
+
+
+#Correção de valores vazios na tabela.
+
+tabela = tabela.dropna()
+
+display(tabela.info())
+
+display(tabela["cancelou"].value_counts(normalize=True).map("{:.1%}".format))
+
+
+# 2- Jupyter
+
+  
+import plotly.express as px
+
+#Criar o gráfico
+
+for coluna in tabela.columns:
+
+    grafico = px.histogram(tabela, x=coluna, color="cancelou")
+
+#Exibir o gráfico
+
+    grafico.show()
+
+
+  # 3- Jupyter
