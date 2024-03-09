@@ -40,3 +40,14 @@ for coluna in tabela.columns:
 
 
   # 3- Jupyter
+
+tabela = tabela[tabela["duracao_contrato"]!="Monthly"]
+
+
+tabela = tabela[tabela["ligacoes_callcenter"]<=4]
+
+
+tabela = tabela[tabela["dias_atraso"]<=20]
+
+
+display(tabela["cancelou"].value_counts(normalize=True))
